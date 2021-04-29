@@ -19,7 +19,7 @@
                   <a title="全部" href="">全部</a>
                 </li>
                 <li v-for="(item,index) in subjectNestedList" :key="index" :class="{active:oneIndex==index}">
-                  <a :title="item.title"  @click="searchRoom(item.type)">{{item.type}}</a>
+                  <a :title="item.type" href="#" @click="initCourseFirst()">{{item.type}}</a>
                 </li>
               </ul>
             </dd>
@@ -74,25 +74,24 @@
           <!-- /无数据提示 结束-->
           <article v-if="data.total>0" class="comm-course-list">
             <ul class="of" id="bna">
-              <li v-for="item in roomList" :key="item.id">
+              <li v-for="item in data.roomList" :key="item.id">
                 <div class="cc-l-wrap">
                   <section class="course-img">
-                    <img src="https://hotel-1.oss-cn-beijing.aliyuncs.com/2021/04/06/%E7%AE%A1%E7%90%86%E5%91%98%E5%A4%B4%E5%83%8F.jpeg" class="img-responsive" :alt="item.type">
+                    <img :src=item.avator class="img-responsive" :alt="item.type">
                     <div class="cc-mask">
-                      <a href="/room/1" title="查看详情" class="comm-btn c-btn-1">查看详情</a>
+                      <a :href="'/room/'+item.id" title="查看详情" class="comm-btn c-btn-1">查看详情</a>
                     </div>
                   </section>
                   <h3 class="hLh30 txtOf mt10">
-                    <a :href="'/room/'+item.id" :title="item.type" class="course-title fsize18 c-333">{{item.type}}</a>
+                    <a :href="'/room/'+item.id" :title="item.type" class="course-title fsize18 c-333" >{{item.type}}</a>
                   </h3>
                   <section class="mt10 hLh20 of">
-                    <span v-if="Number(item.price)===0" class="fr jgTag bg-green">
-                      <i class="c-fff fsize12 f-fA">免费</i>
-                    </span>
                     <span class="fl jgAttr c-ccc f-fA">
-                      <i class="c-999 f-fA">9634人学习</i>
+                      <i class="c-999 f-fA">人气※※※※※※</i>
                       |
-                      <i class="c-999 f-fA">9634评论</i>
+                      <i class="c-999 f-fA">押金{{item.deposit}}￥</i>
+                      |
+                      <i class="c-999 f-fA">{{item.price}}￥/天</i>
                     </span>
                   </section>
                 </div>
@@ -185,7 +184,7 @@ export default {
     //3 分页切换的方法
     gotoPage(page) {
       room.getRoomList(page,8,this.searchObj).then(response => {
-        this.data = response.data
+        this.data = response.data.data
       })
     },
 
@@ -194,7 +193,8 @@ export default {
       //把传递index值赋值给oneIndex,为了active样式生效
       //this.oneIndex = index
       room.getRoomByType(type).then(response=>{
-        this.data = response.data.roomList
+        this.data = response.data.data
+        
       })
 
       //把一级分类点击id值，赋值给searchObj
@@ -212,7 +212,7 @@ export default {
       this.priceSort = ""
 
       //把值赋值到searchObj
-      this.searchObj.buyCountSort = this.buyCountSort
+      this.searchObj.price = this.buyCountSort
       this.searchObj.gmtCreateSort = this.gmtCreateSort;
       this.searchObj.priceSort = this.priceSort;
 

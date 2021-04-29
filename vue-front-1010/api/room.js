@@ -4,7 +4,7 @@ export default {
   //条件分页课程查询的方法
   getRoomList(page,limit,searchObj) {
     return request({
-      url: `/adminService/room/pageRoomCondition/${page}/${limit}`,
+      url: `/adminService/subject/pageRoomCondition/${page}/${limit}`,
       method: 'post',
       data: searchObj
     })
@@ -27,7 +27,7 @@ export default {
 
   getRoomByType(type){
       return request({
-          url:'/adminService/admin/front/getRoomByType/'+type,
+          url:'/adminService/subject/getRoomByType/'+type,
           method:'get'
 
       })

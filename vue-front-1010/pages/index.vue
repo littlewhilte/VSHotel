@@ -50,7 +50,7 @@
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a href="#" title="天安门广场" class="course-title fsize18 c-333">天安门广场</a>
+                      <a href="https://you.ctrip.com/sight/beijing1/228.html" title="天安门广场" class="course-title fsize18 c-333">天安门广场</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
