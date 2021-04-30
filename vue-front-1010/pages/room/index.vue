@@ -18,8 +18,9 @@
                 <li>
                   <a title="全部" href="">全部</a>
                 </li>
+                <!-- 遍历房间类型-->
                 <li v-for="(item,index) in subjectNestedList" :key="index" :class="{active:oneIndex==index}">
-                  <a :title="item.type" href="#" @click="initCourseFirst()">{{item.type}}</a>
+                  <a :title="item.type"  @click="getRoomListByType(item.type)">{{item.type}}</a>
                 </li>
               </ul>
             </dd>
@@ -38,17 +39,20 @@
           </dl> -->
           <div class="clear"></div>
         </section>
+
+        <!-- 筛选条件 -->
         <div class="js-wrap">
           <section class="fr">
             <span class="c-ccc">
               <i class="c-master f-fM">1</i>/
-              <i class="c-666 f-fM">1</i>
+              <i class="c-666 f-fM">2</i>
             </span>
           </section>
+
           <section class="fl">
             <ol class="js-tap clearfix">
              <li :class="{'current bg-orange':buyCountSort!=''}">
-                <a title="热度" href="javascript:void(0);" @click="searchBuyCount()">销量
+                <a title="热度" href="javascript:void(0);" @click="searchBuyCount()">早餐
                 <span :class="{hide:buyCountSort==''}">↓</span>
                 </a>
               </li>
@@ -58,13 +62,28 @@
                 </a>
               </li>
               <li :class="{'current bg-orange':priceSort!=''}">
-                <a title="价格" href="javascript:void(0);" @click="searchPrice()">价格&nbsp;
+                <a title="价格" href="javascript:void(0);" @click="searchPrice()">价格（范围）&nbsp;
                   <span :class="{hide:priceSort==''}">↓</span>
                 </a>
+              </li>
+              <li>
+                <el-form :inline="true" class="demo-form-inline">
+                    <el-date-picker
+                        v-model="data.begin"
+                        type="daterange"
+                        range-separator="至"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期"
+                        value-format="yyyy-MM-dd"          
+                        size="medium"
+                        />
+                </el-form>
               </li>
             </ol>
           </section>
         </div>
+        
+        <!-- 房间数据 -->
         <div class="mt40">
           <!-- /无数据提示 开始-->
           <section class="no-data-wrap" v-if="data.total==0">
@@ -72,6 +91,7 @@
             <span class="c-666 fsize14 ml10 vam">没有相关数据，小编正在努力整理中...</span>
           </section>
           <!-- /无数据提示 结束-->
+          <!-- 有数据 -->
           <article v-if="data.total>0" class="comm-course-list">
             <ul class="of" id="bna">
               <li v-for="item in data.roomList" :key="item.id">
@@ -79,9 +99,10 @@
                   <section class="course-img">
                     <img :src=item.avator class="img-responsive" :alt="item.type">
                     <div class="cc-mask">
-                      <a :href="'/room/'+item.id" title="查看详情" class="comm-btn c-btn-1">查看详情</a>
+                      <a :href="'/room/'+item.id" title="预订" class="comm-btn c-btn-1">预订</a>
                     </div>
                   </section>
+                  <!-- 房间类型名 -->
                   <h3 class="hLh30 txtOf mt10">
                     <a :href="'/room/'+item.id" :title="item.type" class="course-title fsize18 c-333" >{{item.type}}</a>
                   </h3>
@@ -100,6 +121,7 @@
             <div class="clear"></div>
           </article>
         </div>
+
         <!-- 公共分页 开始 -->
         <div>
           <div class="paging">
@@ -133,12 +155,14 @@
               @click.prevent="gotoPage(data.pages)">末</a>
             <div class="clear"/>
           </div>
-    </div>
+        </div>
       </section>
     </section>
-    <!-- /课程列表 结束 -->
+    <!-- /房间列表 结束 -->
   </div>
 </template>
+
+
 <script>
 import room from '@/api/room'
 
@@ -149,14 +173,15 @@ export default {
       data:{},  //房间列表
       subjectNestedList: [], // 一级分类列表
       subSubjectList: [], // 二级分类列表
-
+      type:"单人间",
       searchObj: {}, // 查询表单对象
-
       oneIndex:-1,
       twoIndex:-1,
       buyCountSort:"",
       gmtCreateSort:"",
-      priceSort:""
+      priceSort:"",
+      startTime:"",
+      endTime:"",
     }
   },
   created() {
@@ -189,12 +214,11 @@ export default {
     },
 
     //4 点击某个一级分类，查询对应二级分类
-    searchRoom(type) {
+    getRoomListByType() {
       //把传递index值赋值给oneIndex,为了active样式生效
       //this.oneIndex = index
-      room.getRoomByType(type).then(response=>{
+      room.getRoomByType(1,8,this.type).then(response=>{
         this.data = response.data.data
-        
       })
 
       //把一级分类点击id值，赋值给searchObj
@@ -254,6 +278,7 @@ export default {
 
   }
 };
+
 </script>
 <style scoped>
   .active {
@@ -264,5 +289,12 @@ export default {
   }
   .show {
     display: block;
+  }
+  .el-table .warning-row {
+    background: oldlace;
+  }
+
+  .el-table .success-row {
+    background: #f0f9eb;
   }
 </style>

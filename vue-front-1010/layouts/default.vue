@@ -19,9 +19,9 @@
             <router-link to="/viewport" tag="li" active-class="current">
               <a>热门景点</a>
             </router-link>
-            <router-link to="/meal" tag="li" active-class="current">
+            <!-- <router-link to="/meal" tag="li" active-class="current">
               <a>餐饮</a>
-            </router-link>
+            </router-link> -->
             <router-link to="/about" tag="li" active-class="current">
               <a>关于</a>
             </router-link>

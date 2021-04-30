@@ -25,9 +25,6 @@
             <el-button type="primary" round @click="getMultList()">套间</el-button>
         </el-col>
       </el-row>
-      <el-row>
-
-      </el-row>
       <!--查询表单-->
         <el-form :inline="true" class="demo-form-inline">
             <el-form-item label="房间号" class="demo-input-size">
@@ -107,6 +104,12 @@
             sortable
             width="180">
           </el-table-column> 
+          <el-table-column
+            prop="avator"
+            label="图片云链接地址"
+            sortable
+            width="400">
+          </el-table-column>           
           <el-table-column label="操作" width="200" align="center">
               <template slot-scope="scope">
                   <router-link :to="'/room/edit/'+scope.row.id">
@@ -286,75 +289,3 @@
 
   }
 </script>
-
-        // <el-tabs type="border-card">
-        //   <el-tab-pane label="房间管理" @click="getSingleList()">
-        // <el-table
-        //   :data="list"
-        //   style="width: 100%"
-        //   :row-class-name="tableRowClassName">
-        //   <el-table-column
-        //     prop="id"
-        //     label="房间ID"
-        //     width="180">
-        //   </el-table-column>
-        //   <el-table-column
-        //     prop="rid"
-        //     label="房间号"
-        //     width="100">
-        //   </el-table-column>
-        //   <el-table-column
-        //     prop="type"
-        //     width="100"
-        //     label="房间类型">
-        //   </el-table-column>
-        //   <el-table-column
-        //     prop="state"
-        //     label="房间状态"
-        //     width="50">
-        //   </el-table-column>
-        //   <el-table-column
-        //     prop="price"
-        //     label="房间价格（/天）"
-        //     width="120">
-        //   </el-table-column>
-        //   <el-table-column
-        //     prop="deposit"
-        //     label="房间押金"
-        //     width="120">
-        //   </el-table-column>
-        //   <el-table-column
-        //     prop="startTime"
-        //     label="入住日期"
-        //     sortable
-        //     width="180">
-        //   </el-table-column> 
-        //   <el-table-column
-        //     prop="endTime"
-        //     label="退房日期"
-        //     sortable
-        //     width="180">
-        //   </el-table-column> 
-        //   <el-table-column label="操作" width="200" align="center">
-        //       <template slot-scope="scope">
-        //           <router-link :to="'/room/edit/'+scope.row.id">
-        //               <el-button type="primary" size="mini" icon="el-icon-edit">修改</el-button>
-        //           </router-link>
-        //           <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataByRid(scope.row.rid)">删除</el-button>
-        //       </template>
-        //   </el-table-column>
-        // </el-table>
-        // <!-- 分页 -->
-        // <el-pagination
-        //     :current-page="page"
-        //     :page-size="limit"
-        //     :total="total"
-        //     style="padding: 30px 0; text-align: center;"
-        //     layout="total, prev, pager, next, jumper"
-        //     @current-change="getList"
-        // />
-        //   </el-tab-pane>
-        //   <el-tab-pane label="配置管理">配置管理</el-tab-pane>
-        //   <el-tab-pane label="角色管理">角色管理</el-tab-pane>
-        //   <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
-        // </el-tabs>

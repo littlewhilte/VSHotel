@@ -20,16 +20,16 @@ export default {
   //课程详情的方法
   getRoomInfo(id) {
     return request({
-      url: '/adminService/admin/front/getRoomInfo/'+id,
+      url: '/adminService/admin/front/getRoomFrontInfo/'+id,
       method: 'get'
     })
   },
 
-  getRoomByType(type){
+  getRoomByType(page,limit,type){
       return request({
-          url:'/adminService/subject/getRoomByType/'+type,
-          method:'get'
-
+          url:`/adminService/subject/getRoomByType/${page}/${limit}`,
+          method:'post',
+          data: type
       })
   }
 }
