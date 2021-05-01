@@ -45,7 +45,7 @@
           <section class="fr">
             <span class="c-ccc">
               <i class="c-master f-fM">1</i>/
-              <i class="c-666 f-fM">2</i>
+              <i class="c-666 f-fM">1</i>
             </span>
           </section>
 
@@ -72,12 +72,15 @@
                         v-model="data.begin"
                         type="daterange"
                         range-separator="至"
-                        start-placeholder="开始日期"
-                        end-placeholder="结束日期"
+                        :start-placeholder=startTime
+                        :end-placeholder=endTime
                         value-format="yyyy-MM-dd"          
                         size="medium"
                         />
                 </el-form>
+              </li>
+              <li>
+
               </li>
             </ol>
           </section>
@@ -97,15 +100,16 @@
               <li v-for="item in data.roomList" :key="item.id">
                 <div class="cc-l-wrap">
                   <section class="course-img">
-                    <img :src=item.avator class="img-responsive" :alt="item.type">
+                    <img :src=item.avatar class="img-responsive" :alt="item.type">
                     <div class="cc-mask">
-                      <a :href="'/room/'+item.id" title="预订" class="comm-btn c-btn-1">预订</a>
+                      <a href="#" title="预订" @click="createOrder(item.id)"  class="comm-btn c-btn-1">预订</a>
                     </div>
                   </section>
                   <!-- 房间类型名 -->
                   <h3 class="hLh30 txtOf mt10">
                     <a :href="'/room/'+item.id" :title="item.type" class="course-title fsize18 c-333" >{{item.type}}</a>
                   </h3>
+                  
                   <section class="mt10 hLh20 of">
                     <span class="fl jgAttr c-ccc f-fA">
                       <i class="c-999 f-fA">人气※※※※※※</i>
@@ -165,12 +169,21 @@
 
 <script>
 import room from '@/api/room'
+import order from '@/api/order'
 
 export default {
   data() {
     return {
       page:1, //当前页
       data:{},  //房间列表
+      order:{
+        days:4,//根据时间算
+        id:"4",//自动生成
+        gid:"1",
+        total:1234,
+        createTime:"2021-05-01 18:02:34"
+
+      }, //订单
       subjectNestedList: [], // 一级分类列表
       subSubjectList: [], // 二级分类列表
       type:"单人间",
@@ -180,8 +193,8 @@ export default {
       buyCountSort:"",
       gmtCreateSort:"",
       priceSort:"",
-      startTime:"",
-      endTime:"",
+      startTime:"入住日期",
+      endTime:"离开日期",
     }
   },
   created() {
@@ -274,6 +287,29 @@ export default {
 
       //调用方法查询
       this.gotoPage(1)
+    },
+    getDateTime(startTime,endTime) {
+      var dateSpan, iDays;
+      let sDate1 = Date.parse(getDateFilter(startTime));
+      let sDate2 = Date.parse(getDateFilter(endTime));
+      dateSpan = sDate2 - sDate1;
+      dateSpan = Math.abs(dateSpan);
+      days = Math.floor(dateSpan / (24 * 3600 * 1000));
+    },
+    // 生成订单（订单id、房间类型、天数、总计、创建时间）
+    createOrder(){
+      order.createOrder(this.order)
+      .then(response=>{
+          //添加成功
+          //提示信息
+          this.$message({
+              type:'success',
+              message:'添加成功!'
+              
+           });
+          //路由跳转 redirect
+        alert("预订成功！")
+      })
     }
 
   }
@@ -293,8 +329,34 @@ export default {
   .el-table .warning-row {
     background: oldlace;
   }
-
   .el-table .success-row {
     background: #f0f9eb;
+  }
+
+  .el-row {
+    margin-bottom: 20px;
+    /* &:last-child {
+      margin-bottom: 0;
+    } */
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .bg-purple-dark {
+    background: #99a9bf;
+  }
+  .bg-purple {
+    background: #d3dce6;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
   }
 </style>

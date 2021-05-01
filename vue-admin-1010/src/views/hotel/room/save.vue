@@ -1,64 +1,64 @@
 <template>
   <div class="app-container">
     <el-form label-width="80px">
-      <el-form-item label="房间号">
-        <el-input v-model="room.rid"/>
-      </el-form-item>
       <el-form-item label="房间类型">
         <el-input v-model="room.type"/>
-      </el-form-item>
-      <el-form-item label="房间状态">
-        <el-input v-model="room.state"/>
-      </el-form-item>      
+      </el-form-item>  
        <el-form-item label="房间价格">
         <el-input v-model="room.price"/>
       </el-form-item>     
       <el-form-item label="房间押金">
         <el-input v-model="room.deposit"/>
       </el-form-item>
-            <el-form-item label="起始时间">
-            <el-date-picker
-                v-model="room.startTime"
-                type="datetime"
-                placeholder="选择开始时间"
-                value-format="yyyy-MM-dd HH:mm:ss"
-                default-time="00:00:00"
-                />
-            </el-form-item>
-            <el-form-item label="退房时间">
-                <el-date-picker
-                v-model="room.endTime"
-                type="datetime"
-                placeholder="选择截止时间"
-                value-format="yyyy-MM-dd HH:mm:ss"
-                default-time="00:00:00"
-                />
-            </el-form-item>      
+      <el-form-item label="房间数量">
+        <el-input v-model="room.capacity"/>
+      </el-form-item>
+      <el-form-item label="房间剩余">
+        <el-input v-model="room.surplus"/>
+      </el-form-item>    
+      <el-form-item label="创建时间">
+        <el-date-picker
+          v-model="room.startTime"
+          type="datetime"
+          placeholder="选择开始时间"
+          value-format="yyyy-MM-dd HH:mm:ss"
+          default-time="00:00:00"
+          />
+      </el-form-item>
+      <el-form-item label="修改时间">
+          <el-date-picker
+          v-model="room.modifyTime"
+          type="datetime"
+          placeholder="选择修改时间"
+          value-format="yyyy-MM-dd HH:mm:ss"
+          default-time="00:00:00"
+          />
+      </el-form-item>      
       <!-- 房间图片 -->
-            <el-form-item label="房间图片">
-              <!-- 头衔缩略图 -->
-              <pan-thumb :image="room.avator"/>
-              <!-- 文件上传按钮 -->
-              <el-button type="primary" icon="el-icon-upload" @click="imagecropperShow=true">更换图片
-              </el-button>
-              <!--
-              v-show：是否显示上传组件
-              :key：类似于id，如果一个页面多个图片上传控件，可以做区分
+      <el-form-item label="房间图片">
+        <!-- 头衔缩略图 -->
+        <pan-thumb :image="room.avator"/>
+        <!-- 文件上传按钮 -->
+        <el-button type="primary" icon="el-icon-upload" @click="imagecropperShow=true">更换图片
+        </el-button>
+        <!--
+        v-show：是否显示上传组件
+        :key：类似于id，如果一个页面多个图片上传控件，可以做区分
               :url：后台上传的url地址
               @close：关闭上传组件
               @crop-upload-success：上传成功后的回调 
                 <input type="file" name="file"/>
               -->
-              <image-cropper
-                    v-show="imagecropperShow"
-                    :width="200"
-                    :height="150"
-                    :key="imagecropperKey"
-                    :url="BASE_API+'/hotelOss/fileOss'"
-                    field="file"
-                    @close="close"
-                    @crop-upload-success="cropSuccess"/>
-              </el-form-item>   
+        <image-cropper
+              v-show="imagecropperShow"
+              :width="200"
+              :height="150"
+              :key="imagecropperKey"
+              :url="BASE_API+'/hotelOss/fileOss'"
+              field="file"
+              @close="close"
+              @crop-upload-success="cropSuccess"/>
+        </el-form-item>   
       <el-form-item>
         <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
       </el-form-item>

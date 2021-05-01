@@ -33,21 +33,21 @@
             <el-form-item label="房间状态">
                 <el-input v-model="roomQuery.state" size="mini"/>
             </el-form-item>       
-            <el-form-item label="起始时间">
+            <el-form-item label="创建时间">
             <el-date-picker
                 v-model="roomQuery.begin"
                 type="datetime"
-                placeholder="选择开始时间"
+                placeholder="选择创建时间"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 default-time="00:00:00"
                 size="mini"
                 />
             </el-form-item>
-            <el-form-item label="截止时间">
+            <el-form-item label="更新时间">
                 <el-date-picker
                 v-model="roomQuery.end"
                 type="datetime"
-                placeholder="选择截止时间"
+                placeholder="选择更新时间"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 default-time="00:00:00"
                 size="mini"
@@ -65,50 +65,59 @@
           <el-table-column
             prop="id"
             label="房间ID"
-            width="180">
-          </el-table-column>
-          <el-table-column
-            prop="rid"
-            label="房间号"
-            width="100">
+            sortable
+            width="180" 
+            align="center"> 
           </el-table-column>
           <el-table-column
             prop="type"
             width="100"
-            label="房间类型">
-          </el-table-column>
-          <el-table-column
-            prop="state"
-            label="房间状态"
-            width="50">
+            label="房间类型"
+            align="center">
           </el-table-column>
           <el-table-column
             prop="price"
             label="房间价格（/天）"
-            width="120">
+            width="150"
+            align="center">
           </el-table-column>
           <el-table-column
             prop="deposit"
             label="房间押金"
-            width="120">
+            width="120"
+            align="center">
+          </el-table-column>
+          <el-table-column
+            prop="capacity"
+            label="房间数"
+            width="100"
+            align="center">
+          </el-table-column>
+          <el-table-column
+            prop="surplus"
+            label="房间空闲数"
+            width="150"
+            align="center">
           </el-table-column>
           <el-table-column
             prop="startTime"
-            label="入住日期"
+            label="创建日期"
             sortable
             width="180">
           </el-table-column> 
+
           <el-table-column
-            prop="endTime"
-            label="退房日期"
+            prop="modifyTime"
+            label="修改日期"
             sortable
-            width="180">
+            width="180"
+            align="center">
           </el-table-column> 
           <el-table-column
-            prop="avator"
+            prop="avatar"
             label="图片云链接地址"
-            sortable
-            width="400">
+            width="300"
+            align="center">
           </el-table-column>           
           <el-table-column label="操作" width="200" align="center">
               <template slot-scope="scope">
