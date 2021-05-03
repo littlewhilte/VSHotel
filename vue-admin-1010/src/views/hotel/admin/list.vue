@@ -10,7 +10,7 @@
       width="200">
     </el-table-column>
     <el-table-column
-      prop="username"
+      prop="name"
       label="姓名"
       width="200">
     </el-table-column>

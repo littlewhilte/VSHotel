@@ -11,7 +11,7 @@ export default{
             data:userQuery
         })
     },
-    deleteGuestId(id){
+    deleteUserById(id){
         return request({
             url:`/userService/user/${id}`,
             method: 'delete',    

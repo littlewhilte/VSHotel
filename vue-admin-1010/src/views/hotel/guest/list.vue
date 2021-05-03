@@ -124,7 +124,7 @@
                 })
             },
             //清空查询条件
-            resetData() {
+            resetData(){
                 this.userQuery = {}//条件清空
                 this.getList()//查询结果表单清空至初始状态
             },
@@ -136,22 +136,22 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    guest.deleteGuestId(id)
+                    guest.deleteUserById(id)
                     .then(response=>{
                         //提示信息
                         this.$message({
                             type:'success',
                             message:'删除成功!'
-                    });
-                     //刷新页面
-                    this.getList()
-                }).catch(() => {
+                        });
+                        //刷新页面
+                        this.getList()
+                    })
+                }).catch(error => {
                     this.$message({
                         type: 'info',
                         message: '已取消删除'
                     });          
                 });
-            })
             }
         }
     }

@@ -6,7 +6,7 @@
     <el-table-column
       prop="id"
       label="ID"
-      width="100"
+      width="40"
       align="center">
     </el-table-column>
     <el-table-column
@@ -16,77 +16,51 @@
       align="center">
     </el-table-column>
     <el-table-column
-      prop="type"
-      label="房间类型"
+      prop="totalFee"
+      label="订单总计"
       width="100" 
       align="center"
       >
     </el-table-column>
     <el-table-column
-      prop="nickname"
-      label="用户昵称"
+      prop="serialNo"
+      label="订单流水"
       width="100" 
       align="center"
       >
     </el-table-column>
-    <el-table-column
-      prop="mobile"
-      label="用户手机"
-      width="120" 
-      align="center"
-      >
-    </el-table-column>    
-    <el-table-column
-      prop="days"
-      label="入住天数"
-      width="80"
-      align="center">
-    </el-table-column>
-    <el-table-column
-      prop="total"
-      label="订单金额"
-      width="100"
-      align="center">
-    </el-table-column>        
     <el-table-column
       prop="payType"
       label="支付方式"
       width="100"
       align="center">
     </el-table-column>
-
-   <el-table-column
-      prop="status"
+    <el-table-column
+      prop="tradeStatus"
       label="支付状态"
-      width="100"
-      align="center">
-      <template slot-scope="scope">
-       {{scope.row.status===1?'支付完成':'未支付'}}
-      </template>      
-    </el-table-column>  
-
+      width="120" 
+      align="center"
+      >
+    </el-table-column>         
     <el-table-column
       prop="createTime"
-      label="下单时间"
-      width="150"
+      label="创建时间"
+      width="200"
       align="center">
     </el-table-column>
     <el-table-column
       prop="modifyTime"
-      label="上次修改时间"
-      width="150"
+      label="修改时间"
+      width="200"
       align="center">
     </el-table-column> 
     <el-table-column
       prop="isDeleted"
-      label="是否逻辑删除"
-      width="110"
+      label="是否删除"
+      width="100"
       align="center">
-      <template slot-scope="scope">
-      {{scope.row.is_deleted===1?'已删除':'未删除'}}
-      </template>
     </el-table-column>   
-    <el-table-column label="操作" width="200" align="center">
+    <el-table-column label="操作" width="250" align="center">
         <template slot-scope="scope">
             <!-- <router-link :to="'/order/edit/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit">详情</el-button>
@@ -98,7 +72,7 @@
 </template>
 
 <script>
-  import order from '@/api/order/order'
+  import paylog from '@/api/pay/payLog'
   export default {
     data() {
       return {
@@ -106,7 +80,7 @@
           page:1,
           limit:10,
           total:0,
-          orderQuery:{}
+          PayLogQuery:{}
       }
     },
     created(){
@@ -115,7 +89,7 @@
     methods:{
         getList(page=1){
                 this.page=page
-                order.getOrderListPage(this.page,this.limit,this.orderQuery)
+                paylog.getPayLogListPage(this.page,this.limit,this.PayLogQuery)
                 .then(response=>{
                     this.list=response.data.rows
                     this.total=response.data.total
@@ -133,7 +107,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                order.deleteOrderId(id)
+                paylog.removeDataById(id)
                 .then(response=>{
                   //提示信息
                   this.$message({

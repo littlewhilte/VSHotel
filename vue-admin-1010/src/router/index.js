@@ -146,6 +146,12 @@ export const constantRouterMap = [
         name: 'Order',
         component: () => import('@/views/hotel/order/list'),
         meta: { title: '订单管理', icon: 'form' },
+      },
+      {
+        path: 'paylog',
+        name: 'payLog',
+        component: () => import('@/views/hotel/order/payLog'),
+        meta: { title: '订单日志', icon: 'form' },
       }
     ] 
   },
