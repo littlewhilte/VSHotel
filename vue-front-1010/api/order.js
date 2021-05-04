@@ -13,5 +13,17 @@ export default {
       url: `/adminService/order-list/getOrderInfo/`+id,
       method: 'get',
     })
+  },
+  createNative(orderNo){
+    return request({
+      url: `/adminService/payLog/createNative/`+orderNo,
+      method: 'get',
+    })
+  },
+  queryOrderStatus(orderNo){
+    return request({
+      url: `/adminService/payLog/queryPayStatus/`+orderNo,
+      method: 'get',
+    })
   }
 }

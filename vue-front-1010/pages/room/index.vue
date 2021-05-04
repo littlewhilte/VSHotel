@@ -197,6 +197,16 @@ export default {
       endTime:"离开日期",
     }
   },
+  // asyncData({ params, error }) {
+  //    return room.getRoomInfo(params.id)
+  //       .then(response => {
+  //         return {
+  //           courseWebVo: response.data.data.courseWebVo,
+  //           chapterVideoList: response.data.data.chapterVideoList,
+  //           roomId:params.id
+  //         }
+  //       })
+  //  },
   created() {
     //课程第一次查询
     this.initCourseFirst()
@@ -298,15 +308,19 @@ export default {
     },
     // 生成订单（订单id、房间类型、天数、总计、创建时间）
     createOrder(id){
-      order.createOrder(this.item.id)
+      order.createOrder(this.id)
       .then(response=>{
+        //获取返回订单号
+        response.data.data.orderId
+        //挑战到订单显示页面
+        this.$router.push({path:'/order/'+response.data.data.orderId})
           //添加成功
           //提示信息
-          this.$message({
-              type:'success',
-              message:'添加成功!'             
-           });
-          //路由跳转(支付页面) redirect
+        this.$message({
+            type:'success',
+            message:'添加成功!'             
+        });
+        //路由跳转(支付页面) redirect
         alert("预订成功！")
       })
     }
