@@ -102,7 +102,7 @@
                   <section class="course-img">
                     <img :src=item.avatar class="img-responsive" :alt="item.type">
                     <div class="cc-mask">
-                      <a href="#" title="预订" @click="createOrder(item.id)"  class="comm-btn c-btn-1">预订</a>
+                      <a href="#" title="预订" @click="createOrder(item.id)" class="comm-btn c-btn-1">预订</a>
                     </div>
                   </section>
                   <!-- 房间类型名 -->
@@ -297,17 +297,16 @@ export default {
       days = Math.floor(dateSpan / (24 * 3600 * 1000));
     },
     // 生成订单（订单id、房间类型、天数、总计、创建时间）
-    createOrder(){
-      order.createOrder(this.order)
+    createOrder(id){
+      order.createOrder(this.item.id)
       .then(response=>{
           //添加成功
           //提示信息
           this.$message({
               type:'success',
-              message:'添加成功!'
-              
+              message:'添加成功!'             
            });
-          //路由跳转 redirect
+          //路由跳转(支付页面) redirect
         alert("预订成功！")
       })
     }

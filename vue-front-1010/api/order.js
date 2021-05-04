@@ -2,11 +2,16 @@ import request from '@/utils/request'
 
 export default {
   //根据信息生成订单
-  createOrder(order) {
+  createOrder(rid) {
     return request({
-      url: `/adminService/order-list/addOrder/`,
+      url: `/adminService/order-list/createOrder/`+rid,
       method: 'post',
-      data: order
+    })
+  },
+  getOrderInfo(id){
+    return request({
+      url: `/adminService/order-list/getOrderInfo/`+id,
+      method: 'get',
     })
   }
 }
