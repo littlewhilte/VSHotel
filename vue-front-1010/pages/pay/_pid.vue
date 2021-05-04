@@ -49,7 +49,7 @@ export default {
      //每隔三秒调用一次查询订单状态的方法
      mounted() {//页面渲染之后执行
         this.timer1 = setInterval(() => {
-            this.queryOrderStatus(this.payObj.out_trade_no)
+            this.queryOrderStatus(this.payObj.order_no)
         },3000);
      },
      methods:{
@@ -65,7 +65,7 @@ export default {
                             message: '支付成功!'
                         })
                         //跳转回到课程详情页面
-                        this.$router.push({path: '/course/' + this.payObj.course_id})
+                        this.$router.push({path: '/course/' + this.payObj.rid})
                      }
                 })
          }
