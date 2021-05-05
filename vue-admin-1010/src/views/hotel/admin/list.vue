@@ -7,42 +7,46 @@
     <el-table-column
       prop="id"
       label="管理员ID"
-      width="200">
+      width="200"
+      align="center">
     </el-table-column>
     <el-table-column
-      prop="name"
+      prop="username"
       label="姓名"
-      width="200">
+      width="200"
+      align="center">
     </el-table-column>
     <el-table-column
       prop="password"
       label="密码"
-      width="200">
+      width="200"
+      align="center">
     </el-table-column>
     <el-table-column
       prop="phone"
       label="手机号"
-      width="200">
+      width="200"
+      align="center">
     </el-table-column>
     <el-table-column label="操作" width="250" align="center">
             <template slot-scope="scope">
                 <router-link :to="'/admin/edit/'+scope.row.id">
-                    <el-button type="primary" size="mini" icon="el-icon-edit">修改</el-button>
+                    <el-button type="primary" size="medium" icon="el-icon-edit">修改个人信息</el-button>
                 </router-link>
                 <!-- <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">删除</el-button> -->
             </template>
     </el-table-column>
   </el-table>
-          <!-- 分页 -->
-        <el-pagination
-            :current-page="page"
-            :page-size="limit"
-            :total="total"
-            style="padding: 30px 0; text-align: center;"
-            layout="total, prev, pager, next, jumper"
-            @current-change="getList"
-        />
-        </div>
+  <!-- 分页 -->
+  <!-- <el-pagination
+      :current-page="page"
+      :page-size="limit"
+      :total="total"
+      style="padding: 30px 0; text-align: center;"
+      layout="total, prev, pager, next, jumper"
+       @current-change="getList"
+  /> -->
+</div>
 </template>
 
 <script>
@@ -58,6 +62,7 @@
       }
     },
     created(){
+      //进入界面获得管理员信息
         this.getList()
     },
     methods:{

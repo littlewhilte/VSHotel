@@ -1,22 +1,54 @@
 <template>
   <div class="app-container">
-    <el-form label-width="180px">
+    <el-form label-width="500px">
       <el-form-item label="管理员姓名">
-        <el-input v-model="admin.username"/>
+        <el-input 
+          v-model="admin.username"
+          clearable
+          size="medium" 
+          class="inputWidth"
+        />
       </el-form-item>
       <el-form-item label="管理员密码">
-        <el-input v-model="admin.password"/>
+        <el-input 
+          v-model="admin.password"
+          show-password 
+          clearable
+          size="medium" 
+          class="inputWidth"
+        />
       </el-form-item>
       <el-form-item label="管理员手机号">
-        <el-input v-model="admin.phone"/>
+        <el-input 
+        v-model="admin.phone"
+        clearable
+        size="medium"
+        class="inputWidth"
+        />
       </el-form-item>
       <!-- 讲师头像：TODO -->
       <el-form-item>
-        <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
+        <el-button 
+          :disabled="saveBtnDisabled" 
+          type="primary" 
+          @click="saveOrUpdate"
+          size="medium"
+          class="buttonWidth"
+        >
+          保存
+        </el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
+<style>
+  .inputWidth{
+    width:200px;
+  }
+  .buttonWidth{
+    width:200px;
+  }
+</style>
 <script>
     import admin from '@/api/admin/admin'
     export default {

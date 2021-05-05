@@ -57,7 +57,6 @@
                 <el-button type="warning" @click="resetData()" size="mini">清空</el-button>
         </el-form>
 
-
         <el-table
           :data="list"
           style="width: 100%"
@@ -66,7 +65,7 @@
             prop="id"
             label="房间ID"
             sortable
-            width="180" 
+            width="90" 
             align="center"> 
           </el-table-column>
           <el-table-column
@@ -77,49 +76,51 @@
           </el-table-column>
           <el-table-column
             prop="price"
-            label="房间价格（/天）"
-            width="150"
+            label="房间价格（元/天）"
+            width="90"
             align="center">
           </el-table-column>
           <el-table-column
             prop="deposit"
-            label="房间押金"
-            width="120"
+            label="房间押金（元）"
+            width="100"
             align="center">
           </el-table-column>
           <el-table-column
             prop="capacity"
             label="房间数"
-            width="100"
+            width="90"
             align="center">
           </el-table-column>
           <el-table-column
             prop="surplus"
             label="房间空闲数"
-            width="150"
+            width="100"
             align="center">
           </el-table-column>
           <el-table-column
             prop="startTime"
             label="创建日期"
             sortable
-            width="180">
+            width="170"
+            align="center"
+            >
           </el-table-column> 
 
           <el-table-column
             prop="modifyTime"
             label="修改日期"
             sortable
-            width="180"
+            width="170"
             align="center">
           </el-table-column> 
           <el-table-column
             prop="avatar"
             label="图片云链接地址"
-            width="300"
+            width="200"
             align="center">
           </el-table-column>           
-          <el-table-column label="操作" width="200" align="center">
+          <el-table-column label="操作" width="180" align="center">
               <template slot-scope="scope">
                   <router-link :to="'/room/edit/'+scope.row.id">
                       <el-button type="primary" size="mini" icon="el-icon-edit">修改</el-button>
@@ -163,7 +164,6 @@
           limit:10,
           total:0,
           roomQuery:{},
-
       }
     },
     methods: {

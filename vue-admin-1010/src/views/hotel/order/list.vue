@@ -44,17 +44,16 @@
     </el-table-column>
     <el-table-column
       prop="total"
-      label="订单金额"
+      label="订单金额(元)"
       width="100"
       align="center">
     </el-table-column>        
     <el-table-column
       prop="payType"
       label="支付方式"
-      width="100"
+      width="90"
       align="center">
     </el-table-column>
-
    <el-table-column
       prop="status"
       label="支付状态"
@@ -68,25 +67,25 @@
     <el-table-column
       prop="createTime"
       label="下单时间"
-      width="150"
+      width="160"
       align="center">
     </el-table-column>
     <el-table-column
       prop="modifyTime"
       label="上次修改时间"
-      width="150"
+      width="160"
       align="center">
     </el-table-column> 
     <el-table-column
       prop="isDeleted"
-      label="是否逻辑删除"
-      width="110"
+      label="逻辑删除"
+      width="80"
       align="center">
       <template slot-scope="scope">
       {{scope.row.is_deleted===1?'已删除':'未删除'}}
       </template>
     </el-table-column>   
-    <el-table-column label="操作" width="200" align="center">
+    <el-table-column label="操作" width="100" align="center">
         <template slot-scope="scope">
             <!-- <router-link :to="'/order/edit/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit">详情</el-button>

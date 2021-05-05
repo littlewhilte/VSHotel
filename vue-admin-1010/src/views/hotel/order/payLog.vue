@@ -1,4 +1,5 @@
 <template>
+<div class="app-container">
   <el-table
     :data="list"
     stripe
@@ -41,6 +42,9 @@
       width="120" 
       align="center"
       >
+        <template slot-scope="scope">
+        {{scope.row.tradeStatus===1?'已支付':'未支付'}}
+        </template>
     </el-table-column>         
     <el-table-column
       prop="createTime"
@@ -59,8 +63,11 @@
       label="是否删除"
       width="100"
       align="center">
+      <template slot-scope="scope">
+      {{scope.row.is_deleted===1?'已删除':'未删除'}}
+      </template>
     </el-table-column>   
-    <el-table-column label="操作" width="250" align="center">
+    <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
             <!-- <router-link :to="'/order/edit/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit">详情</el-button>
@@ -69,6 +76,16 @@
         </template>
     </el-table-column>
   </el-table>
+  <!-- 分页 -->
+        <el-pagination
+            :current-page="page"
+            :page-size="limit"
+            :total="total"
+            style="padding: 30px 0; text-align: center;"
+            layout="total, prev, pager, next, jumper"
+            @current-change="getList"
+        />
+  </div>    
 </template>
 
 <script>

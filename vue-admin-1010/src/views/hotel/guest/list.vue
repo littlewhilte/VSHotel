@@ -22,13 +22,13 @@
                 <el-date-picker
                 v-model="userQuery.end"
                 type="datetime"
-                placeholder="选择截止时间"
+                placeholder="选择修改时间"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 default-time="00:00:00"
                 />
             </el-form-item>
-                <el-button type="primary" icon="el-icon-search" @click="getList()">查询</el-button>
-                <el-button type="default" @click="resetData()">清空</el-button>
+                <el-button type="primary" icon="el-icon-search" @click="getList()" class="buttonClass">查询</el-button>
+                <el-button type="default" @click="resetData()" class="buttonClass">清空</el-button>
         </el-form>
         <!-- 表格 -->
         <el-table
@@ -45,8 +45,8 @@
             </template>
         </el-table-column>
 
-        <el-table-column prop="nickname" label="姓名" width="100" align="center" />
-        <el-table-column prop="sex" label="性别" width="50">
+        <el-table-column prop="nickname" label="昵称" width="150" align="center" />
+        <el-table-column prop="sex" label="性别" width="50" align="center">
             <template slot-scope="scope">
                 {{scope.row.sex===1?'男':'女'}}
             </template>
@@ -73,6 +73,7 @@
                 <router-link :to="'/guest/edit/'+scope.row.id">
                     <el-button type="primary" size="mini" icon="el-icon-edit">修改</el-button>
                 </router-link>
+            
                 <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">删除</el-button>
             </template>
         </el-table-column>
@@ -88,39 +89,44 @@
         />
     </div>
 </template>
+
+<style>
+    .buttonClass{
+        width: 120px;
+    }
+</style>
+
 <script>
-    import guest from '@/api/guest/guest'
-    export default{
-        //
-        data(){
-            //变量的初始值
-            return{
-                list:null,
-                page:1,
-                limit:10,
-                total:0,
-                userQuery:{}
-            }
-        },
-        created(){
-            this.getList()
-        },
-        methods:{
+import guest from '@/api/guest/guest'
+export default{
+    created(){
+        this.getList()
+    },
+    data(){
+        //变量的初始值
+        return{
+            list:null,
+            page:1,
+            limit:10,
+            total:0,
+            userQuery:{}
+        }
+    },
+    methods:{
             //列表方法
-            getList(page=1){
-                this.page=page
-                guest.getUserListPage(this.page,this.limit,this.userQuery)
-                .then(response=>{
+        getList(page=1){
+            this.page=page
+            guest.getUserListPage(this.page,this.limit,this.userQuery)
+            .then(response=>{
                     //success
                     // console.log(response)
                     this.list=response.data.rows
                     this.total=response.data.total
                     console.log(this.list)
                     console.log(this.total)
-                })
-                .catch(error=>{
-                    //error
-                    console.log(error)
+            }).catch(error=>{
+                //error
+                console.log(error)
                 })
             },
             //清空查询条件
