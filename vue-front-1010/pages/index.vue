@@ -4,18 +4,23 @@
     <div v-swiper:mySwiper="swiperOption">
         <div class="swiper-wrapper">
             <div class="swiper-slide" style="background: #040B1B;">
-                <a target="_blank" href="/">
+                <a target="_blank">
                     <img src="~/assets/photo/banner/gallery08.jpg" alt="首页banner">
                 </a>
             </div>
             <div class="swiper-slide" style="background: #040B1B;">
-                <a target="_blank" href="/">
+                <a target="_blank">
                     <img src="~/assets/photo/banner/gallery02.jpg" alt="首页banner">
                 </a>
             </div>
             <div class="swiper-slide" style="background: #040B1B;">
-                <a target="_blank" href="/">
+                <a target="_blank">
                     <img src="~/assets/photo/banner/gallery11.jpg" alt="首页banner">
+                </a>
+            </div>
+            <div class="swiper-slide" style="background: #040B1B;">
+                <a target="_blank">
+                    <img src="~/assets/photo/banner/gallery02.jpg" alt="首页banner">
                 </a>
             </div>
         </div>
@@ -25,9 +30,8 @@
     </div>
     <!-- 幻灯片 结束 -->
      <div id="aCoursesList">
-      <!-- 网校课程 开始 -->
+      <!-- 景点 开始 -->
       <div>
-
         <section class="container">
           <header class="comm-title">
             <h2 class="tac">
@@ -46,15 +50,23 @@
                         alt="天安门广场"
                       >
                       <div class="cc-mask">
-                        <a href="viewport" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
+                        <a href="https://you.ctrip.com/sight/beijing1/228.html" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
                       <a href="https://you.ctrip.com/sight/beijing1/228.html" title="天安门广场" class="course-title fsize18 c-333">天安门广场</a>
                     </h3>
+                    <!-- <el-rate
+                      width="80%"
+                      v-model="value"
+                      disabled
+                      show-score
+                      text-color="#ff9900"
+                      score-template="{value}">
+                    </el-rate> -->
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
-                        <i class="c-fff fsize12 f-fA">免费</i>
+                        <i class="c-fff fsize12 f-fA">￥60</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA">253241人去过</i>
@@ -70,18 +82,18 @@
                       <img
                         src="~/assets/photo/views/天坛.png"
                         class="img-responsive"
-                        alt="Java精品课程"
+                        alt="天坛"
                     >
                       <div class="cc-mask">
-                        <a href="#" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
+                        <a href="https://you.ctrip.com/sight/beijing1/233.html" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a href="#" title="天坛" class="course-title fsize18 c-333">天坛</a>
+                      <a href="https://you.ctrip.com/sight/beijing1/233.html" title="天坛" class="course-title fsize18 c-333">天坛</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
-                        <i class="c-fff fsize12 f-fA">免费</i>
+                        <i class="c-fff fsize12 f-fA">￥45</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA">18432人去过</i>
@@ -100,15 +112,15 @@
                         alt="长城"
                       >
                       <div class="cc-mask">
-                        <a href="#" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
+                        <a href="https://you.ctrip.com/sight/beijing1/230.html" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a href="#" title="长城" class="course-title fsize18 c-333">长城</a>
+                      <a href="https://you.ctrip.com/sight/beijing1/230.html" title="长城" class="course-title fsize18 c-333">长城</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
-                        <i class="c-fff fsize12 f-fA">免费</i>
+                        <i class="c-fff fsize12 f-fA">￥40</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA">200432人去过</i>
@@ -127,15 +139,15 @@
                         alt="水立方"
                       >
                       <div class="cc-mask">
-                        <a href="#" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
+                        <a href="https://you.ctrip.com/sight/beijing1/52627.html" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a href="#" title="水立方" class="course-title fsize18 c-333">水立方</a>
+                      <a href="https://you.ctrip.com/sight/beijing1/52627.html" title="水立方" class="course-title fsize18 c-333">水立方</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
-                        <i class="c-fff fsize12 f-fA">50￥/人</i>
+                        <i class="c-fff fsize12 f-fA">￥168</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA">12256人去过</i>
@@ -154,22 +166,22 @@
                         alt="圆明园"
                       >
                       <div class="cc-mask">
-                        <a href="#" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
+                        <a href="https://you.ctrip.com/sight/beijing1/5208.html" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
                       <a
-                        href="#"
+                        href="https://you.ctrip.com/sight/beijing1/5208.html"
                         title="圆明园"
                         class="course-title fsize18 c-333"
                       >圆明园</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
-                        <i class="c-fff fsize12 f-fA">60￥/人</i>
+                        <i class="c-fff fsize12 f-fA">￥60</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">131237人学习</i>
+                        <i class="c-999 f-fA">131237人去过</i>
                         |
                         <i class="c-999 f-fA">137124评论</i>
                       </span>
@@ -185,16 +197,16 @@
                         alt="颐和园"
                       >
                       <div class="cc-mask">
-                        <a href="#" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
+                        <a href="https://you.ctrip.com/sight/beijing1/231.html" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a href="#" title="颐和园" class="course-title fsize18 c-333">颐和园</a>
+                      <a href="https://you.ctrip.com/sight/beijing1/231.html" title="颐和园" class="course-title fsize18 c-333">颐和园</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
 
-                        <i class="c-fff fsize12 f-fA">56￥/人</i>
+                        <i class="c-fff fsize12 f-fA">￥30</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA">125321人去过</i>
@@ -213,15 +225,15 @@
                         alt="北海公园"
                       >
                       <div class="cc-mask">
-                        <a href="#" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
+                        <a href="https://you.ctrip.com/sight/beijing1/232.html" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a href="#" title="北海公园" class="course-title fsize18 c-333">北海公园</a>
+                      <a href="https://you.ctrip.com/sight/beijing1/232.html" title="北海公园" class="course-title fsize18 c-333">北海公园</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
-                        <i class="c-fff fsize12 f-fA">45￥/人</i>
+                        <i class="c-fff fsize12 f-fA">￥69</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA">123123人去过</i>
@@ -240,18 +252,18 @@
                         alt="南锣古巷"
                       >
                       <div class="cc-mask">
-                        <a href="#" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
+                        <a href="https://you.ctrip.com/sight/beijing1/64955.html" title="了解详情" class="comm-btn c-btn-1">了解详情</a>
                       </div>
                     </section>
                     <h3 class="hLh30 txtOf mt10">
-                      <a href="#" title="南锣古巷" class="course-title fsize18 c-333">南锣鼓巷</a>
+                      <a href="https://you.ctrip.com/sight/beijing1/64955.html" title="南锣古巷" class="course-title fsize18 c-333">南锣鼓巷</a>
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
                         <i class="c-fff fsize12 f-fA">免费</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
-                        <i class="c-999 f-fA">341233人学习</i>
+                        <i class="c-999 f-fA">341233人去过</i>
                         |
                         <i class="c-999 f-fA">3412评论</i>
                       </span>
@@ -262,115 +274,12 @@
               <div class="clear"></div>
             </article>
             <section class="tac pt20">
-              <a href="#" title="全部景点" class="comm-btn c-btn-2">全部景点</a>
+              <a href="https://you.ctrip.com/place/beijing1.html" title="全部景点" class="comm-btn c-btn-2">全部景点</a>
             </section>
           </div>
         </section>
       </div>
-      <!-- /网校课程 结束 -->
-      <!-- 网校名师 开始 -->
-      <div>
-        <section class="container">
-          <header class="comm-title">
-            <h2 class="tac">
-              <span class="c-333">名师大咖</span>
-            </h2>
-          </header>
-          <div>
-            <article class="i-teacher-list">
-              <ul class="of">
-                <li>
-                  <section class="i-teach-wrap">
-                    <div class="i-teach-pic">
-                      <a href="/teacher/1" title="姚晨">
-                        <img alt="姚晨" src="~/assets/photo/teacher/1442297885942.jpg">
-                      </a>
-                    </div>
-                    <div class="mt10 hLh30 txtOf tac">
-                      <a href="/teacher/1" title="姚晨" class="fsize18 c-666">姚晨</a>
-                    </div>
-                    <div class="hLh30 txtOf tac">
-                      <span class="fsize14 c-999">北京师范大学法学院副教授</span>
-                    </div>
-
-                    <div class="mt15 i-q-txt">
-                      <p
-                        class="c-999 f-fA"
-                      >北京师范大学法学院副教授、清华大学法学博士。自2004年至今已有9年的司法考试培训经验。长期从事司法考试辅导，深知命题规律，了解解题技巧。内容把握准确，授课重点明确，层次分明，调理清晰，将法条法理与案例有机融合，强调综合，深入浅出。</p>
-                    </div>
-                  </section>
-                </li>
-                <li>
-                  <section class="i-teach-wrap">
-                    <div class="i-teach-pic">
-                      <a href="/teacher/1" title="谢娜">
-                        <img alt="谢娜" src="~/assets/photo/teacher/1442297919077.jpg">
-                      </a>
-                    </div>
-                    <div class="mt10 hLh30 txtOf tac">
-                      <a href="/teacher/1" title="谢娜" class="fsize18 c-666">谢娜</a>
-                    </div>
-                    <div class="hLh30 txtOf tac">
-                      <span class="fsize14 c-999">资深课程设计专家，专注10年AACTP美国培训协会认证导师</span>
-                    </div>
-                    <div class="mt15 i-q-txt">
-                      <p
-                        class="c-999 f-fA"
-                      >十年课程研发和培训咨询经验，曾任国企人力资源经理、大型外企培训经理，负责企业大学和培训体系搭建；曾任专业培训机构高级顾问、研发部总监，为包括广东移动、东莞移动、深圳移动、南方电网、工商银行、农业银行、民生银行、邮储银行、TCL集团、清华大学继续教育学院、中天路桥、广西扬翔股份等超过200家企业提供过培训与咨询服务，并担任近50个大型项目的总负责人。</p>
-                    </div>
-                  </section>
-                </li>
-                <li>
-                  <section class="i-teach-wrap">
-                    <div class="i-teach-pic">
-                      <a href="/teacher/1" title="刘德华">
-                        <img alt="刘德华" src="~/assets/photo/teacher/1442297927029.jpg">
-                      </a>
-                    </div>
-                    <div class="mt10 hLh30 txtOf tac">
-                      <a href="/teacher/1" title="刘德华" class="fsize18 c-666">刘德华</a>
-                    </div>
-                    <div class="hLh30 txtOf tac">
-                      <span class="fsize14 c-999">上海师范大学法学院副教授</span>
-                    </div>
-                    <div class="mt15 i-q-txt">
-                      <p
-                        class="c-999 f-fA"
-                      >上海师范大学法学院副教授、清华大学法学博士。自2004年至今已有9年的司法考试培训经验。长期从事司法考试辅导，深知命题规律，了解解题技巧。内容把握准确，授课重点明确，层次分明，调理清晰，将法条法理与案例有机融合，强调综合，深入浅出。</p>
-
-                    </div>
-                  </section>
-                </li>
-                <li>
-                  <section class="i-teach-wrap">
-                    <div class="i-teach-pic">
-                      <a href="/teacher/1" title="周润发">
-                        <img alt="周润发" src="~/assets/photo/teacher/1442297935589.jpg">
-                      </a>
-                    </div>
-                    <div class="mt10 hLh30 txtOf tac">
-                      <a href="/teacher/1" title="周润发" class="fsize18 c-666">周润发</a>
-                    </div>
-                    <div class="hLh30 txtOf tac">
-                      <span class="fsize14 c-999">考研政治辅导实战派专家，全国考研政治命题研究组核心成员。</span>
-                    </div>
-                    <div class="mt15 i-q-txt">
-                      <p
-                        class="c-999 f-fA"
-                      >法学博士，北京师范大学马克思主义学院副教授，专攻毛泽东思想概论、邓小平理论，长期从事考研辅导。出版著作两部，发表学术论文30余篇，主持国家社会科学基金项目和教育部重大课题子课题各一项，参与中央实施马克思主义理论研究和建设工程项目。</p>
-                    </div>
-                  </section>
-                </li>
-              </ul>
-              <div class="clear"></div>
-            </article>
-            <section class="tac pt20">
-              <a href="#" title="全部讲师" class="comm-btn c-btn-2">全部讲师</a>
-            </section>
-          </div>
-        </section>
-      </div>
-      <!-- /网校名师 结束 -->
+      <!-- 景点 结束 -->
     </div>
   </div>
 </template>
@@ -393,14 +302,15 @@ data () {
       },
       //banner数组
       bannerList:[],
-      viewList:[]
+
+      viewList:[],
+      value:4.5
     }
   },
   created(){
     // this.getBannerList()
   },
   methods :{
-
     // getBannerList(){
     //   banner.getBannerList()
     //   .then(response=>{

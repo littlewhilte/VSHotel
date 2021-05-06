@@ -8,7 +8,7 @@
     <div class="sign-up-container">
       <el-form ref="userForm" :model="user">
 
-        <el-form-item class="input-prepend restyle" prop="mobile" :rules="[{ required: true, message: '请输入手机号码', trigger: 'blur' },{validator: checkPhone, trigger: 'blur'}]">
+        <el-form-item class="input-prepend restyle" prop="mobile" :rules="[{ required: true, message: '请输入手机号', trigger: 'blur' },{validator: checkPhone, trigger: 'blur'}]">
           <div >
             <el-input type="text" placeholder="手机号" v-model="user.mobile"/>
             <i class="iconfont icon-phone" />
@@ -30,13 +30,11 @@
         <h6>社交帐号登录</h6>
         <ul>
           <li><a id="weixin" class="weixin" target="_blank" href="http://localhost:8150/api/ucenter/wx/login"><i class="iconfont icon-weixin"/></a></li>
-          <li><a id="qq" class="qq" target="_blank" href="#"><i class="iconfont icon-qq"/></a></li>
         </ul>
       </div>
     </div>
   </div>
 </template>
-
 
 <script>
   import '~/assets/css/sign.css'

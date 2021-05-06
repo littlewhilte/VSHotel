@@ -1,5 +1,5 @@
 body{
-    background-color: #F1F1F1;
+    background-color: #5698d6de;
 }
 
 *, :after, :before {
@@ -21,7 +21,7 @@ a{
 
 /*后代选择器*/
 .sign-up-msg a{
-    color: #3194d0;
+    color: #5aa5d3;
 }
 
 .sign-up-msg a:hover{
@@ -30,26 +30,27 @@ a{
 
 .sign {
     height: 100%;
-    min-height: 750px;
+    min-height: 500px;
     text-align: center;
-    font-size: 14px;
-    background-color: #f1f1f1;
+    font-size: 18px;
+    background-color: #5698d6de;
 }
 
 /*表单样式*/
 .sign .main{
     background-color: #FFFFFF;
     width: 400px;
-    padding: 50px;
-    margin: 60px auto 0 auto;
+    padding: 30px;
+    margin: 100px auto 0 auto;
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .sign .logo{
-    position: absolute;
-    top: 56px;
-    left: 50px;
+    top: 5px;
+    
+    align:center;
+    margin:0px auto 0px auto;
 }
 
 
@@ -72,17 +73,17 @@ a{
 
 .sign .title .active{
     font-weight: 700;
-    color: #3BB149;
+    color: #04aa17;
     border-bottom: 2px solid #3BB149;
 }
 
 .sign .title span{
     padding: 10px;
-    color: #969696;
+    color: #090a09;
     font-weight: 700;
 }
 
-/*表单文本框
+/* 表单文本框 */
 .sign form .input input{
     width: 100%;
     height: 50px;
@@ -90,7 +91,7 @@ a{
     border: 1px solid #c8c8c8;
     background-color: #F8F8F8;
     box-sizing: border-box;
-}*/
+}
 
 .sign form .restyle {
     margin-bottom: 0;
@@ -124,7 +125,7 @@ a{
     color: #969696;
 }
 .sign .sign-up-button{
-    margin-top: 20px;
+    margin-top: 5px;
     width: 100%;
     padding: 9px 18px;
     font-size: 18px;
@@ -140,11 +141,11 @@ a{
 
 .sign .sign-in-button{
     margin-top: 20px;
-    width: 100%;
+    width: 80%;
     padding: 9px 18px;
     font-size: 18px;
     border: none;
-    border-radius: 25px;
+    border-radius: 20px;
     color: #FFFFFF;
     background-color: #3194d0;
     cursor: pointer;
@@ -154,7 +155,7 @@ a{
 }
 
 .sign .more-sign {
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
 .sign .more-sign h6 {
