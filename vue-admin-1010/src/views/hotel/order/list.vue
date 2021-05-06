@@ -96,14 +96,14 @@
     </el-table-column>
   </el-table>
 <!-- 分页 -->
-        <el-pagination
+        <!-- <el-pagination
             :current-page="page"
             :page-size="limit"
             :total="total"
             style="padding: 30px 0; text-align: center;"
             layout="total, prev, pager, next, jumper"
             @current-change="getList"
-        />
+        /> -->
   </div>
 </template>
 
