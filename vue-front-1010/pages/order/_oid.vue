@@ -21,7 +21,7 @@
         <tr>
 
           <td colspan="3" class="teacher">房间id：{{this.order.rid}}</td>
-          <td colspan="3" class="teacher">房间类型：{{this.order.rid}}</td>           
+          <td colspan="3" class="teacher">房间类型：{{type}}</td>           
         </tr>
         <tr class="good">
           <td class="name First">
@@ -75,7 +75,9 @@ import ordersApi from '@/api/order'
 export default {
     data(){
         return{
-            order:{}
+            order:{},
+            rid:this.order.rid,
+            type:getTypeByRid(rid)
         }
     },
     asyncData({ params, error }) {
@@ -87,10 +89,20 @@ export default {
                 }
             })
     },
+    created(){
+      this.getTypeByRid();
+    },
     methods:{
         //去支付
         toPay() {
             this.$router.push({path:'/pay/'+this.order.orderNo})
+        },
+        getTypeByRid(rid){
+          ordersApi.getTypeByRid(rid)
+          .then(response=>{
+            type = response.data.type
+            console.log(this.type)
+          })
         }
     }
 }

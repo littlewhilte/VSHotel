@@ -69,9 +69,10 @@
               <li>
                 <el-form :inline="true" class="demo-form-inline">
                     <el-date-picker
-                        v-model="data.begin"
+                        v-model="caDay"
                         type="daterange"
-                        range-separator="至"
+                        unlink-panels=false
+                        range-separator= "至"
                         :start-placeholder=startTime
                         :end-placeholder=endTime
                         value-format="yyyy-MM-dd"          
@@ -79,8 +80,9 @@
                         />
                 </el-form>
               </li>
-              <li>
-
+              <li class="c-master f-fM">
+                {{caDay===null?'0':caculateDay(caDay)}}
+                <p>共({{day}})天</p>
               </li>
             </ol>
           </section>
@@ -108,15 +110,22 @@
                   <!-- 房间类型名 -->
                   <h3 class="hLh30 txtOf mt10">
                     <a :href="'/room/'+item.id" :title="item.type" class="course-title fsize18 c-333" >{{item.type}}</a>
-                  </h3>
-                  
-                  <section class="mt10 hLh20 of">
-                    <span class="fl jgAttr c-ccc f-fA">
-                      <i class="c-999 f-fA">人气※※※※※※</i>
-                      |
+                      &nbsp;&nbsp;&nbsp;&nbsp;
                       <i class="c-999 f-fA">押金{{item.deposit}}￥</i>
                       |
                       <i class="c-999 f-fA">{{item.price}}￥/天</i>
+                  </h3>
+                  <section class="mt10 hLh20 of">
+                    <span class="fl jgAttr c-ccc f-fA">
+                      <i class="c-999 f-fA">                        
+                      <el-rate
+                        v-model="item.value"
+                        disabled
+                        show-score
+                        text-color="#ff9900"
+                        score-template="{value}">
+                      </el-rate>
+                      </i>
                     </span>
                   </section>
                 </div>
@@ -175,13 +184,13 @@ export default {
   data() {
     return {
       page:1, //当前页
-      data:{},  //房间列表
+      data:{
+
+      },  //房间列表
       order:{
-        days:4,//根据时间算
-        id:"4",//自动生成
-        gid:"1",
-        total:1234,
-        createTime:"2021-05-01 18:02:34"
+        days:this.day,//根据时间算
+        total:room.price*this.days,
+        createTime:""
 
       }, //订单
       subjectNestedList: [], // 一级分类列表
@@ -195,6 +204,9 @@ export default {
       priceSort:"",
       startTime:"入住日期",
       endTime:"离开日期",
+      value: 3.7,
+      caDay:[],
+      day:"0"
     }
   },
   // asyncData({ params, error }) {
@@ -308,11 +320,11 @@ export default {
     },
     // 生成订单（订单id、房间类型、天数、总计、创建时间）
     createOrder(id){
-      order.createOrder(this.id)
+      order.createOrder(id)
       .then(response=>{
-        //获取返回订单号
+        //获取返回订单号order_no
         response.data.data.orderId
-        //挑战到订单显示页面
+        //跳转到订单显示页面
         this.$router.push({path:'/order/'+response.data.data.orderId})
           //添加成功
           //提示信息
@@ -323,6 +335,15 @@ export default {
         //路由跳转(支付页面) redirect
         alert("预订成功！")
       })
+    },
+    //计算天数
+    caculateDay(caDay){
+      let starttime = new Date(caDay[0])
+      let endtime = new Date(caDay[1])
+      starttime = new Date(starttime.getFullYear(), starttime.getMonth(), starttime.getDate())
+      endtime = new Date(endtime.getFullYear(), endtime.getMonth(), endtime.getDate())
+      const diff = endtime.getTime()-starttime.getTime()
+      this.day = diff/(24*60*60*1000)
     }
 
   }

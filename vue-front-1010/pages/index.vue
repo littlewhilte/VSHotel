@@ -247,7 +247,7 @@
                   <div class="cc-l-wrap">
                     <section class="course-img">
                       <img
-                        src="~/assets/photo/views/南锣古巷.jpeg"
+                        src="~/assets/photo/views/南锣鼓巷.jpeg"
                         class="img-responsive"
                         alt="南锣古巷"
                       >
@@ -260,7 +260,7 @@
                     </h3>
                     <section class="mt10 hLh20 of">
                       <span class="fr jgTag bg-green">
-                        <i class="c-fff fsize12 f-fA">免费</i>
+                        <i class="c-fff fsize12 f-fA">Free</i>
                       </span>
                       <span class="fl jgAttr c-ccc f-fA">
                         <i class="c-999 f-fA">341233人去过</i>

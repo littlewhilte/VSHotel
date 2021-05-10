@@ -2,9 +2,9 @@ import request from '@/utils/request'
 
 export default {
   //根据信息生成订单
-  createOrder(rid) {
+  createOrder(id) {
     return request({
-      url: `/adminService/order-list/createOrder/`+rid,
+      url: `/adminService/order-list/createOrder/`+id,
       method: 'post',
     })
   },
@@ -23,6 +23,12 @@ export default {
   queryOrderStatus(orderNo){
     return request({
       url: `/adminService/payLog/queryPayStatus/`+orderNo,
+      method: 'get',
+    })
+  },
+  getTypeByRid(rid){
+    return request({
+      url: `/adminService/room/getRoomTypeByRid/`+rid,
       method: 'get',
     })
   }
