@@ -1,38 +1,35 @@
 <template>
     <div class="app-container">
-      <el-row type="flex" justify="end">
+      <el-row type="flex" justify="start">
         <el-col :span="4">
-            <el-button round @click="resetData()">所有房间</el-button>
+            <el-button  @click="resetData()">所有房间</el-button>
         </el-col>
       </el-row>
       <el-row type="flex" justify="center">      
         <el-col :span="4">
-            <el-button type="primary" round  @click="getSingleList()">单人间</el-button>
+            <el-button type="success" round  @click="getSingleList()" >单人间</el-button>
         </el-col>
         <el-col :span="4">
             <el-button type="success" round @click="getStandardList()">标准间</el-button>
         </el-col>   
         <el-col :span="4">
-            <el-button type="info" round @click="getRichList()">豪华间</el-button>
+            <el-button type="success" round @click="getRichList()">豪华间</el-button>
         </el-col>     
         <el-col :span="4">
-            <el-button type="warning" round @click="getBusyList()">商务间</el-button>
+            <el-button type="success" round @click="getBusyList()">商务间</el-button>
         </el-col>
         <el-col :span="4">
-            <el-button type="danger" round @click="getPolicyList()">行政间</el-button>
+            <el-button type="success" round @click="getPolicyList()">行政间</el-button>
         </el-col>
         <el-col :span="4">
-            <el-button type="primary" round @click="getMultList()">套间</el-button>
+            <el-button type="success" round @click="getMultList()">套间</el-button>
         </el-col>
       </el-row>
       <!--查询表单-->
         <el-form :inline="true" class="demo-form-inline">
-            <el-form-item label="房间号" class="demo-input-size">
+            <el-form-item label="房间ID" class="demo-input-size">
                 <el-input v-model="roomQuery.rid" size="mini"/>
-            </el-form-item>            
-            <el-form-item label="房间状态">
-                <el-input v-model="roomQuery.state" size="mini"/>
-            </el-form-item>       
+            </el-form-item>                  
             <el-form-item label="创建时间">
             <el-date-picker
                 v-model="roomQuery.begin"
@@ -53,7 +50,7 @@
                 size="mini"
                 />
             </el-form-item>
-                <el-button type="primary" icon="el-icon-search" @click="getList()" size="mini"></el-button>
+                <el-button type="primary" icon="el-icon-search" @click="getList()" size="mini">查询</el-button>
                 <el-button type="warning" @click="resetData()" size="mini">清空</el-button>
         </el-form>
 
@@ -122,6 +119,9 @@
           </el-table-column>           
           <el-table-column label="操作" width="180" align="center">
               <template slot-scope="scope">
+                <router-link :to="'/room/create/'+scope.row.id">
+                  <el-button type="success" size="mini">开房</el-button>    
+                </router-link>
                   <router-link :to="'/room/edit/'+scope.row.id">
                       <el-button type="primary" size="mini" icon="el-icon-edit">修改</el-button>
                   </router-link>

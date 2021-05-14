@@ -1,5 +1,36 @@
 <template>
 <div class="app-container">
+          <!--查询表单-->
+          <!-- TODO -->
+        <el-form :inline="true" class="demo-form-inline">
+            <el-form-item>
+                <el-input v-model="orderQuery.orderNo" placeholder="订单号"/>
+            </el-form-item>
+            <el-form-item>
+                <el-input v-model="orderQuery.roomNo" placeholder="房间号"/>
+            </el-form-item>      
+
+            <el-form-item label="起始时间">
+            <el-date-picker
+                v-model="orderQuery.begin"
+                type="datetime"
+                placeholder="选择开始时间"
+                value-format="yyyy-MM-dd HH:mm:ss"
+                default-time="00:00:00"
+                />
+            </el-form-item>
+            <el-form-item label="截止时间">
+                <el-date-picker
+                v-model="orderQuery.modify"
+                type="datetime"
+                placeholder="选择修改时间"
+                value-format="yyyy-MM-dd HH:mm:ss"
+                default-time="00:00:00"
+                />
+            </el-form-item>
+                <el-button type="primary" icon="el-icon-search" @click="getList()" class="buttonClass">查询</el-button>
+                <el-button type="default" @click="resetData()" class="buttonClass">清空</el-button>
+        </el-form>
   <el-table
     :data="list"
     stripe
@@ -23,6 +54,13 @@
       align="center"
       >
     </el-table-column>
+    <el-table-column
+      prop="roomNo"
+      label="房间号"
+      width="100" 
+      align="center"
+      >
+    </el-table-column>    
     <el-table-column
       prop="nickname"
       label="用户昵称"
@@ -86,12 +124,14 @@
       {{scope.row.is_deleted===1?'已删除':'未删除'}}
       </template>
     </el-table-column>   
-    <el-table-column label="操作" width="100" align="center">
+    <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
             <!-- <router-link :to="'/order/edit/'+scope.row.id">
                 <el-button type="primary" size="mini" icon="el-icon-edit">详情</el-button>
             </router-link> -->
             <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">删除</el-button>
+            <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">退房</el-button>
+          
         </template>
     </el-table-column>
   </el-table>

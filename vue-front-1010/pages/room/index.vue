@@ -71,7 +71,6 @@
                     <el-date-picker
                         v-model="caDay"
                         type="daterange"
-                        unlink-panels=false
                         range-separator= "至"
                         :start-placeholder=startTime
                         :end-placeholder=endTime

@@ -74,6 +74,42 @@ export const constantRouterMap = [
       }
     ]
   },
+    //房间管理
+    {
+      path: '/room',
+      component: Layout,
+      redirect: '/room/table',
+      name: '房间管理',
+      meta: { title: '房间管理', icon: 'table' },
+      children: [
+        {
+          path: 'create/:id',
+          name: '开房',
+          component: () => import('@/views/hotel/room/create'),
+          meta: { title: '开房间', noCache:true },
+          hidden:true        
+        },
+        {
+          path: 'table',
+          name: '房间列表',
+          component: () => import('@/views/hotel/room/roomList'),
+          meta: { title: '管理房间', icon: 'table' }
+        },
+        {
+          path: 'save',
+          name: '添加房间',
+          component: () => import('@/views/hotel/room/save'),
+          meta: { title: '添加房间', icon: 'tree' }
+        },
+        {
+          path: 'edit/:id',   
+          name: '修改房间信息',
+          component: () => import('@/views/hotel/room/save'),
+          meta: { title: '修改房间', noCache: true },
+          hidden: true
+        }
+      ]
+    },
   //游客管理
   {
     path: '/guest',
@@ -103,35 +139,7 @@ export const constantRouterMap = [
       }
     ]
   },
-  //房间管理
-  {
-    path: '/room',
-    component: Layout,
-    redirect: '/room/table',
-    name: '房间管理',
-    meta: { title: '房间管理', icon: 'table' },
-    children: [
-      {
-        path: 'table',
-        name: '房间列表',
-        component: () => import('@/views/hotel/room/roomList'),
-        meta: { title: '管理房间', icon: 'table' }
-      },
-      {
-        path: 'save',
-        name: '添加房间',
-        component: () => import('@/views/hotel/room/save'),
-        meta: { title: '添加房间', icon: 'tree' }
-      },
-      {
-        path: 'edit/:id',   
-        name: '修改房间信息',
-        component: () => import('@/views/hotel/room/save'),
-        meta: { title: '修改房间', noCache: true },
-        hidden: true
-      }
-    ]
-  },
+
   //订单管理
   //TODO
   {

@@ -17,11 +17,11 @@ export default{
             method: 'delete',    
         })
     },
-    addRoom(room) {
+    addRoom(order) {
         return request({
-            url:`/adminService/room/addRoom`,
+            url:`/adminService/room/createRoomByAdmin`,
             method: 'post',
-            data: room//student转换json发送
+            data: order//student转换json发送
         })
     },
     getRoomInfo(id){

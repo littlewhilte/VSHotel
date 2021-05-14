@@ -9,9 +9,9 @@
       <table class="GoodList">
         <tbody>
         <tr>
-          <th class="name">房间</th>
+          <th class="name">房间id</th>
           <th class="price">价格</th>
-          <th class="priceNew">特惠价</th>
+          <td colspan="3" class="teacher">房间类型：{{(order.rid)}}</td>    
         </tr>
         </tbody>
         <tbody>
@@ -19,11 +19,11 @@
           <td colspan="3" class="Title red f18 fb"><p>限时折扣</p></td>
         </tr> -->
         <tr>
-
-          <td colspan="3" class="teacher">房间id：{{this.order.rid}}</td>
-          <td colspan="3" class="teacher">房间类型：{{type}}</td>           
+       
         </tr>
         <tr class="good">
+          <td colspan="2" class="teacher">{{order.rid}}</td>
+
           <td class="name First">
             <a target="_blank" :href="'https://localhost:3000/room/'+order.gid">
               <img :src="order.courseCover"></a>
@@ -41,7 +41,7 @@
         <tr>
           <td class="Billing tr" colspan="3">
             <div class="tr">
-              <p>共 <strong class="red">1</strong> 件商品，合计<span
+              <p>共 <strong class="red">1</strong> 件，合计<span
                 class="red f20">￥<strong>{{order.total}}</strong></span></p>
             </div>
           </td>
@@ -76,21 +76,19 @@ export default {
     data(){
         return{
             order:{},
-            rid:this.order.rid,
-            type:getTypeByRid(rid)
+            rid:"",
+            type:""
         }
     },
     asyncData({ params, error }) {
         return ordersApi.getOrderInfo(params.oid)
             .then(response => {
                 return {
-                    order: response.data.data.order
-                    
+                    order: response.data.data.order,
                 }
             })
     },
     created(){
-      this.getTypeByRid();
     },
     methods:{
         //去支付
@@ -100,8 +98,8 @@ export default {
         getTypeByRid(rid){
           ordersApi.getTypeByRid(rid)
           .then(response=>{
-            type = response.data.type
-            console.log(this.type)
+            var type = response.data.type
+            console.log(type)
           })
         }
     }
