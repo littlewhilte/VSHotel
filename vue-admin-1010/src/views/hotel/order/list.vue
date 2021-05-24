@@ -4,32 +4,37 @@
           <!-- TODO -->
         <el-form :inline="true" class="demo-form-inline">
             <el-form-item>
-                <el-input v-model="orderQuery.orderNo" placeholder="订单号"/>
+                <el-input 
+                  v-model="orderQuery.order_no" 
+                  placeholder="订单号"
+                />
             </el-form-item>
             <el-form-item>
-                <el-input v-model="orderQuery.roomNo" placeholder="房间号"/>
+                <el-input v-model="orderQuery.room_no" placeholder="房间号"/>
             </el-form-item>      
-
-            <el-form-item label="起始时间">
+            <el-form-item>
+                <el-input v-model="orderQuery.mobile" placeholder="手机号"/>
+            </el-form-item>               
+            <el-form-item label="下单时间">
             <el-date-picker
                 v-model="orderQuery.begin"
                 type="datetime"
-                placeholder="选择开始时间"
+                placeholder="选择下单时间"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 default-time="00:00:00"
                 />
             </el-form-item>
-            <el-form-item label="截止时间">
+            <el-form-item label="离宿时间">
                 <el-date-picker
                 v-model="orderQuery.modify"
                 type="datetime"
-                placeholder="选择修改时间"
+                placeholder="选择离宿时间"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 default-time="00:00:00"
                 />
             </el-form-item>
                 <el-button type="primary" icon="el-icon-search" @click="getList()" class="buttonClass">查询</el-button>
-                <el-button type="default" @click="resetData()" class="buttonClass">清空</el-button>
+                <el-button type="default" @click="resetData()"  class="buttonClass">清空</el-button>
         </el-form>
   <el-table
     :data="list"
@@ -135,15 +140,15 @@
         </template>
     </el-table-column>
   </el-table>
-<!-- 分页 -->
-        <!-- <el-pagination
+    <!-- 分页 -->
+         <el-pagination
             :current-page="page"
             :page-size="limit"
             :total="total"
             style="padding: 30px 0; text-align: center;"
             layout="total, prev, pager, next, jumper"
             @current-change="getList"
-        /> -->
+        />
   </div>
 </template>
 
@@ -175,6 +180,10 @@
                 .catch(error=>{
                     console.log(error)
                 })
+            },
+            resetData(){
+                this.orderQuery = {}//条件清空
+                this.getList()//查询结果表单清空至初始状态
             },
             removeDataById(id){
               //alert("delete"+id)

@@ -1,5 +1,26 @@
 <template>
 <div class="app-container">
+        <!--查询表单-->
+        <el-form :inline="true" class="demo-form-inline">
+            <el-form-item>
+                <el-input v-model="PayLogQuery.order_no" placeholder="订单号"/>
+            </el-form-item>
+            <el-form-item>
+                <el-input v-model="PayLogQuery.serial_no" placeholder="流水号"/>
+            </el-form-item>      
+
+            <el-form-item label="支付时间">
+            <el-date-picker
+                v-model="PayLogQuery.createTime"
+                type="datetime"
+                placeholder="选择支付时间"
+                value-format="yyyy-MM-dd HH:mm:ss"
+                default-time="00:00:00"
+                />
+            </el-form-item>
+                <el-button type="primary" icon="el-icon-search" @click="getList()" class="buttonClass">查询</el-button>
+                <el-button type="default" @click="resetData()" class="buttonClass">清空</el-button>
+        </el-form>
   <el-table
     :data="list"
     stripe
@@ -45,17 +66,23 @@
         <template slot-scope="scope">
         {{scope.row.tradeStatus===1?'已支付':'未支付'}}
         </template>
-    </el-table-column>         
+    </el-table-column>  
+        <el-table-column
+      prop="payTime"
+      label="支付时间"
+      width="150"
+      align="center">
+    </el-table-column>       
     <el-table-column
       prop="createTime"
       label="创建时间"
-      width="200"
+      width="150"
       align="center">
     </el-table-column>
     <el-table-column
       prop="modifyTime"
       label="修改时间"
-      width="200"
+      width="150"
       align="center">
     </el-table-column> 
     <el-table-column
@@ -116,6 +143,11 @@
                 .catch(error=>{
                     console.log(error)
                 })
+            },
+            //清空查询条件
+            resetData(){
+                this.PayLogQuery = {}//条件清空
+                this.getList()//查询结果表单清空至初始状态
             },
             removeDataById(id){
               //alert("delete"+id)

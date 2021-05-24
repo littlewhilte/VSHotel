@@ -1,20 +1,45 @@
 <template>
   <div class="app-container">
-    <el-form label-width="80px">
+    <el-form label-width="500px">
       <el-form-item label="房间类型">
-        <el-input v-model="room.type"/>
+        <el-input 
+          v-model="room.type"
+          clearable 
+          size="medium"
+          class="inputWidth"
+        />
       </el-form-item>  
        <el-form-item label="房间价格">
-        <el-input v-model="room.price"/>
+        <el-input 
+          v-model="room.price"
+          clearable 
+          size="medium"
+          class="inputWidth"
+        />
       </el-form-item>     
       <el-form-item label="房间押金">
-        <el-input v-model="room.deposit"/>
+        <el-input 
+          v-model="room.deposit"
+          clearable 
+          size="medium"
+          class="inputWidth"
+          />
       </el-form-item>
       <el-form-item label="房间数量">
-        <el-input v-model="room.capacity"/>
+        <el-input 
+          v-model="room.capacity"
+          clearable 
+          size="medium"
+          class="inputWidth"
+          />
       </el-form-item>
       <el-form-item label="房间剩余">
-        <el-input v-model="room.surplus"/>
+        <el-input 
+          v-model="room.surplus"
+          clearable 
+          size="medium"
+          class="inputWidth"  
+        />
       </el-form-item>    
       <el-form-item label="创建时间">
         <el-date-picker
@@ -60,11 +85,19 @@
               @crop-upload-success="cropSuccess"/>
         </el-form-item>   
       <el-form-item>
-        <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
+        <el-button class="buttonWidth" :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
+<style>
+  .inputWidth{
+    width:220px;
+  }
+  .buttonWidth{
+    width:100px;
+  }
+</style>
 <script>
     import room from '@/api/room/room'
     import ImageCropper from '@/components/ImageCropper'

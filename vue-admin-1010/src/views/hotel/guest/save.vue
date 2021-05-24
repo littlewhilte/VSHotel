@@ -1,23 +1,53 @@
 <template>
   <div class="app-container">
-    <el-form label-width="80px">
+    <el-form label-width="500px">
       <el-form-item label="游客姓名">
-        <el-input v-model="guest.nickname"/>
+        <el-input 
+          v-model="guest.nickname"
+          clearable 
+          size="medium"
+          class="inputWidth"
+        />
       </el-form-item>
       <el-form-item label="密码">
-        <el-input v-model="guest.password"/>
+        <el-input 
+          v-model="guest.password"
+          clearable 
+          size="medium"
+          class="inputWidth"
+          />
       </el-form-item>
       <el-form-item label="年龄">
-        <el-input v-model="guest.age"/>
+        <el-input 
+          v-model="guest.age"
+          clearable 
+          size="medium"
+          class="inputWidth"
+          />
       </el-form-item>      
        <el-form-item label="手机号">
-        <el-input v-model="guest.mobile"/>
+        <el-input 
+          v-model="guest.mobile"
+          clearable 
+          size="medium"
+          class="inputWidth"
+          />
       </el-form-item>     
       <el-form-item label="创建时间">
-        <el-input v-model="guest.gmtCreate"/>
+        <el-input 
+          v-model="guest.gmtCreate"
+          clearable 
+          size="medium"
+          class="inputWidth"  
+        />
       </el-form-item>
       <el-form-item label="修改时间">
-        <el-input v-model="guest.gmtModified"/>
+        <el-input 
+          v-model="guest.gmtModified"
+          clearable 
+          size="medium"
+          class="inputWidth"
+        />
       </el-form-item>
       <!-- <el-form-item label="是否删除()">
         <el-input v-model="student.is_deleted"/>
@@ -50,11 +80,19 @@
                         @crop-upload-success="cropSuccess"/>
       </el-form-item>      
       <el-form-item>
-        <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
+        <el-button class="buttonWidth" :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
+<style>
+  .inputWidth{
+    width:200px;
+  }
+  .buttonWidth{
+    width:200px;
+  }
+</style>
 <script>
     import guest from '@/api/guest/guest'
     import ImageCropper from '@/components/ImageCropper'
