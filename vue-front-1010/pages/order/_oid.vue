@@ -18,9 +18,6 @@
         <!-- <tr>
           <td colspan="3" class="Title red f18 fb"><p>限时折扣</p></td>
         </tr> -->
-        <tr>
-       
-        </tr>
         <tr class="good">
           <td colspan="2" class="teacher">{{order.rid}}</td>
 

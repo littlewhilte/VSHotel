@@ -19,7 +19,7 @@
             <el-button type="success" round @click="getBusyList()">商务间</el-button>
         </el-col>
         <el-col :span="4">
-            <el-button type="success" round @click="getPolicyList()">行政间</el-button>
+            <el-button type="success" round @click="getPolicyList()">双套间</el-button>
         </el-col>
         <el-col :span="4">
             <el-button type="success" round @click="getMultList()">套间</el-button>
@@ -28,7 +28,7 @@
       <!--查询表单-->
         <el-form :inline="true" class="demo-form-inline">
             <el-form-item label="房间ID" class="demo-input-size">
-                <el-input v-model="roomQuery.rid" size="mini"/>
+                <el-input v-model="roomQuery.id" size="mini"/>
             </el-form-item>                  
             <el-form-item label="创建时间">
             <el-date-picker
@@ -40,11 +40,11 @@
                 size="mini"
                 />
             </el-form-item>
-            <el-form-item label="更新时间">
+            <el-form-item label="修改时间">
                 <el-date-picker
                 v-model="roomQuery.end"
                 type="datetime"
-                placeholder="选择更新时间"
+                placeholder="选择修改时间"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 default-time="00:00:00"
                 size="mini"

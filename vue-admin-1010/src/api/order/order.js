@@ -28,7 +28,17 @@ export default{
             //data 表示把对象转换为json传递到接口中
             data:orderQuery
         })
+    },
+    getOrderNo(){
+        return request({
+            url:`/adminService/order-list/createOrderNo`,
+            method:'post',
+        })
+    },
+    getUserIdBymobile(mobile){
+        return request({
+            url:`/adminService/order-list/getUserIdByMobile/${mobile}`,
+            method:'get'
+        })
     }
-
-    
 }

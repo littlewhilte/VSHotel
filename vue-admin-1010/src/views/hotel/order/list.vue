@@ -112,6 +112,7 @@
       prop="createTime"
       label="下单时间"
       width="160"
+      sortable
       align="center">
     </el-table-column>
     <el-table-column
