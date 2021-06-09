@@ -16,9 +16,9 @@
             <router-link to="/room" tag="li" active-class="current">
               <a>酒店住宿</a>
             </router-link>
-            <router-link to="/about" tag="li" active-class="current">
+            <!-- <router-link to="/about" tag="li" active-class="current">
               <a>关于我们</a>
-            </router-link>
+            </router-link> -->
           </ul>
 
           <ul class="h-r-login">
@@ -71,8 +71,9 @@
       </section>
     </header>
     <!-- /公共头引入 -->
-
-    <nuxt/>
+    <div class="container-main">
+      <nuxt/>
+    </div>
 
     <!-- 公共底引入 -->
     <footer id="footer">
@@ -192,3 +193,6 @@ methods: {
 };
 
 </script>
+
+<style scoped>
+</style>

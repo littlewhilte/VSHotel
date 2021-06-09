@@ -41,14 +41,6 @@
             class="inputWidth"
         />
       </el-form-item>
-      <el-form-item label="顾客ID">
-        <el-input 
-            v-model="order.gid"
-            clearable 
-            size="medium"
-            class="inputWidth"
-        />
-      </el-form-item>
       <el-form-item label="顾客手机号">
         <el-input 
             v-model="order.mobile"
@@ -124,7 +116,7 @@
                   orderNo:"",
                   gid:"",
                   rid:"",
-                  mobile:"15530355538",
+                  mobile:"",
                   total:"700",
                   payType:"",
                   createTime:"",
@@ -178,7 +170,7 @@
               }
             },
             saveOrUpdate() {
-              //this.getUserIdByMobile()
+              this.getUserIdByMobile()
               this.saveRoom()   
             },
             // 保存

@@ -31,5 +31,12 @@ export default {
           method:'post',
           data: type
       })
+  },
+  getRoom(type){
+    return request({
+      url:`/adminService/room/getRoom/${type}`,
+      method:'get'
+    })
   }
+
 }

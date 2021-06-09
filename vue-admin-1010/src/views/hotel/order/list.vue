@@ -175,8 +175,6 @@
                 .then(response=>{
                     this.list=response.data.rows
                     this.total=response.data.total
-                    console.log(this.list)
-                    console.log(this.total)
                 })
                 .catch(error=>{
                     console.log(error)

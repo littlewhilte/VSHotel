@@ -25,18 +25,6 @@
               </ul>
             </dd>
           </dl>
-          <!-- <dl>
-            <dt>
-              <span class="c-999 fsize14"></span>
-            </dt>
-            <dd class="c-s-dl-li">
-              <ul class="clearfix">
-                <li v-for="(item,index) in subSubjectList" :key="index" :class="{active:twoIndex==index}">
-                  <a :title="item.type" href="#" @click="searchTwo(item.id,index)">{{item.type}}</a>
-                </li>
-              </ul>
-            </dd>
-          </dl> -->
           <div class="clear"></div>
         </section>
 
@@ -52,7 +40,7 @@
           <section class="fl">
             <ol class="js-tap clearfix">
              <li :class="{'current bg-orange':buyCountSort!=''}">
-                <a title="热度" href="javascript:void(0);" @click="searchBuyCount()">早餐
+                <a title="热度" href="javascript:void(0);" @click="searchBuyCount()">价格
                 <span :class="{hide:buyCountSort==''}">↓</span>
                 </a>
               </li>
@@ -61,11 +49,11 @@
                 <span :class="{hide:gmtCreateSort==''}">↓</span>
                 </a>
               </li>
-              <li :class="{'current bg-orange':priceSort!=''}">
+              <!-- <li :class="{'current bg-orange':priceSort!=''}">
                 <a title="价格" href="javascript:void(0);" @click="searchPrice()">价格（范围）&nbsp;
                   <span :class="{hide:priceSort==''}">↓</span>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <el-form :inline="true" class="demo-form-inline">
                     <el-date-picker
@@ -97,13 +85,13 @@
           <!-- /无数据提示 结束-->
           <!-- 有数据 -->
           <article v-if="data.total>0" class="comm-course-list">
-            <ul class="of" id="bna">
+            <ul class="of ul-flex" id="bna">
               <li v-for="item in data.roomList" :key="item.id">
                 <div class="cc-l-wrap">
                   <section class="course-img">
                     <img :src=item.avatar class="img-responsive" :alt="item.type">
                     <div class="cc-mask">
-                      <a href="#" title="预订" @click="createOrder(item.id)" class="comm-btn c-btn-1">预订</a>
+                      <a href="#" title="预订" @click="createOrder(item.id,day)" class="comm-btn c-btn-1">预订</a>
                     </div>
                   </section>
                   <!-- 房间类型名 -->
@@ -130,7 +118,7 @@
                 </div>
               </li>
             </ul>
-            <div class="clear"></div>
+            <!-- <div class="clear"></div> -->
           </article>
         </div>
 
@@ -286,8 +274,8 @@ export default {
       this.priceSort = ""
 
       //把值赋值到searchObj
-      this.searchObj.buyCountSort = this.buyCountSort
-      this.searchObj.gmtCreateSort = this.gmtCreateSort;
+      this.searchObj.price = this.buyCountSort
+      this.searchObj.startTime = this.gmtCreateSort;
       this.searchObj.priceSort = this.priceSort;
 
       //调用方法查询
@@ -318,8 +306,8 @@ export default {
       days = Math.floor(dateSpan / (24 * 3600 * 1000));
     },
     // 生成订单（订单id、房间类型、天数、总计、创建时间）
-    createOrder(id){
-      order.createOrder(id)
+    createOrder(id,day){
+      order.createOrder(id,day)
       .then(response=>{
         //获取返回订单号order_no
         response.data.data.orderId
@@ -327,12 +315,8 @@ export default {
         this.$router.push({path:'/order/'+response.data.data.orderId})
           //添加成功
           //提示信息
-        this.$message({
-            type:'success',
-            message:'添加成功!'             
-        });
         //路由跳转(支付页面) redirect
-        alert("预订成功！")
+        // alert("预订成功！")
       })
     },
     //计算天数
@@ -342,7 +326,7 @@ export default {
       starttime = new Date(starttime.getFullYear(), starttime.getMonth(), starttime.getDate())
       endtime = new Date(endtime.getFullYear(), endtime.getMonth(), endtime.getDate())
       const diff = endtime.getTime()-starttime.getTime()
-      this.day = diff/(24*60*60*1000)
+      this.day = isNaN(diff/(24*60*60*1000)) ? 0: diff/(24*60*60*1000) 
     }
 
   }
@@ -350,6 +334,17 @@ export default {
 
 </script>
 <style scoped>
+.ul-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ul-flex li {
+}
+.ul-flex img {
+  margin: 0;
+  width: 100%;
+  height: 220px;
+}
   .active {
     background: #bdbdbd;
   }

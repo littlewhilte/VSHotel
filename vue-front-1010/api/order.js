@@ -2,12 +2,13 @@ import request from '@/utils/request'
 
 export default {
   //根据信息生成订单
-  createOrder(id) {
+  createOrder(id,day) {
     return request({
-      url: `/adminService/order-list/createOrder/`+id,
+      url: `/adminService/order-list/createOrder/${id}/${day}`,
       method: 'post',
     })
   },
+  //根据订单号列出订单信息（需联查） 
   getOrderInfo(id){
     return request({
       url: `/adminService/order-list/getOrderInfo/`+id,
@@ -20,7 +21,7 @@ export default {
       method: 'get',
     })
   },
-  queryOrderStatus(orderNo){
+  queryPayStatus(orderNo){
     return request({
       url: `/adminService/payLog/queryPayStatus/`+orderNo,
       method: 'get',
